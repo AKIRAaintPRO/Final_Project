@@ -1,0 +1,208 @@
+/* ===================== CONTACT PAGE ===================== */
+
+:root {
+    --bg: #0a0a0a;
+    --card: #0f0f0f;
+    --accent: #a52a2a;      /* brown */
+    --accent-dark: #722b2b;
+    --muted: #e6e6e6;
+    --radius: 1rem;
+    --max-width: 650px;
+    --gap: 1.6rem;
+    --ff: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+* { box-sizing: border-box; }
+
+.contact {
+    padding: clamp(4rem, 8vw, 12rem) 1.5rem 6rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--ff);
+    color: var(--muted);
+    background: transparent; /* page background handled in main stylesheet */
+}
+
+/* Title + intro */
+.contact-title {
+    font-size: clamp(2.2rem, 3.5vw, 4.2rem);
+    font-weight: 700;
+    color: var(--accent);
+    margin: 0 0 1.2rem;
+    text-align: center;
+}
+
+.contact-text {
+    font-size: clamp(1.1rem, 1.6vw, 2rem);
+    max-width: 75ch;
+    text-align: center;
+    line-height: 1.6;
+    margin: 0 0 2.5rem;
+    color: var(--muted);
+}
+
+/* Contact Form Card */
+.contact-form {
+    width: min(100%, var(--max-width));
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.15));
+    padding: clamp(1.6rem, 3vw, 3rem);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 0 0 2px rgba(165,42,42,0.06);
+    display: grid;
+    gap: var(--gap);
+    align-items: start;
+    border: 1px solid rgba(165,42,42,0.08);
+}
+
+/* Labels + inputs */
+.contact-form label {
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: 600;
+    display: block;
+    margin-bottom: .4rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: clamp(.9rem, 1.6vw, 1.4rem);
+    font-size: 1rem;
+    color: var(--muted);
+    background: var(--bg);
+    border: 1px solid rgba(59,31,31,0.35);
+    border-radius: .75rem;
+    transition: border-color .18s ease, box-shadow .18s ease, transform .08s ease;
+    outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(230,230,230,0.45);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 6px 20px rgba(114,43,43,0.14);
+    transform: translateY(-1px);
+}
+
+.contact-form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* Button */
+.contact-form button {
+    width: 100%;
+    padding: clamp(1rem, 2vw, 1.4rem);
+    background: linear-gradient(180deg, var(--accent), var(--accent-dark));
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: .8rem;
+    cursor: pointer;
+    border: none;
+    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+
+.contact-form button:hover,
+.contact-form button:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(165,42,42,0.25);
+    filter: brightness(.98);
+}
+
+/* Small helper layout for label + field groups if needed */
+.form-row {
+    display: grid;
+    gap: .9rem;
+    grid-template-columns: 1fr;
+}
+
+/* Responsive layout: two-column fields on wider screens */
+@media (min-width: 720px) {
+    .contact-form .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+}
+
+/* Reduce spacing on very small screens */
+@media (max-width: 420px) {
+    .contact {
+        padding-top: 6rem;
+    }
+    .contact-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* page background and base text color */
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #000; /* solid black background */
+    color: var(--muted);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* header + nav layout: keep logo left, buttons right */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding: 0.9rem 1.5rem;
+    z-index: 40;
+    background: rgba(0,0,0,0.0); /* transparent so black page shows through */
+    backdrop-filter: blur(4px); /* subtle polish on supported browsers */
+}
+
+/* push nav to the right and style links like buttons */
+header nav {
+    margin-left: auto;
+    display: flex;
+    gap: .6rem;
+    align-items: center;
+}
+
+/* logo */
+header a.logo {
+    color: var(--muted);
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 1.05rem;
+}
+
+/* nav "buttons" */
+header nav a {
+    font-family: Calibri, "Segoe UI", Arial, sans-serif; /* Calibri first */
+    color: var(--accent);            /* brown font color */
+    text-decoration: none;
+    font-weight: 700;
+    padding: .45rem .8rem;
+    border-radius: .6rem;
+    background: transparent;
+    transition: background .15s ease, transform .12s ease, color .12s ease;
+    border: 1px solid rgba(165,42,42,0.04);
+}
+
+/* active / hover states */
+header nav a.active,
+header nav a:hover {
+    background: rgba(165,42,42,0.09);
+    transform: translateY(-2px);
+}
+
+/* ensure contact content isn't hidden behind fixed header */
+.contact {
+    padding-top: 6.25rem; /* room for fixed header */
+}
