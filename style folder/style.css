@@ -1,0 +1,497 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: Poppins, sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+    font-size: 70.5%;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh; /* keep a full-screen home section */
+    overflow-x: hidden;
+    background-color: black;
+    color: white;
+}
+
+/* Only make home full viewport height */
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    background-color: transparent;
+    min-height: 100vh; /* full screen */
+    /* homepage-only background */
+    background-image: url("../website%20pics/pic3.jpg");
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.home::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45); /* dark overlay for contrast */
+    z-index: 0;
+    pointer-events: none;
+}
+
+.home .home-content,
+.home .home-image {
+    position: relative;
+    z-index: 1; /* place content above overlay */
+}
+
+/* All other sections scroll naturally */
+.podcast, .episodes {
+    min-height: auto; /* remove full-screen forcing */
+    padding-top: 12rem; /* keep some spacing for header */
+}
+
+section {
+    padding: 5rem 9%;
+}
+
+
+header{
+    margin-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 9%;
+    background-color: transparent;
+    filter: drop-shadow(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo{
+    font-size: 3rem;
+    color: brown;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.logo:hover{
+    transform: scale(1.1);
+}
+
+nav a{
+    font-size: 1.8rem;
+    color: white;
+    margin-left: 4rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+nav a:hover,
+nav a.active{
+    color: brown;
+    border-bottom: 3px solid brown;
+}
+
+@media (max-width: 768px) {
+    /* Make header more compact on phones */
+    header{
+        padding: 0.8rem 5%;
+    }
+
+    /* Responsive nav: inline, wrapping, and touch-friendly */
+    nav{
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem 1rem;
+        align-items: center;
+        justify-content: flex-end;
+        width: auto;
+        background: transparent;
+        padding: 0;
+        border: none;
+    }
+
+    nav a{
+        display: inline-block;
+        font-size: 1.6rem;
+        margin: 0.25rem 0;
+        padding: 0.4rem 0.6rem;
+    }
+
+    nav a:hover,
+    nav a.active{
+        color: brown;
+        background: rgba(165,42,42,0.06);
+        border-radius: 0.5rem;
+    }
+
+    /* Reduce section top padding so content isn't pushed off-screen behind the fixed header */
+    .podcast, .episodes {
+        padding-top: 6.5rem;
+    }
+
+    /* Adjust home image sizing on small screens */
+    .home-image img{
+        width: 70vw;
+    }
+}
+
+section{
+    min-height: 100vh;
+    padding: 5rem 9% 5rem;
+}
+
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    background-color: transparent;
+}
+
+.home .home-content{
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+span{
+    color: brown;
+}
+
+.home-content h3{
+    font-size: 4rem;
+    margin-bottom: 1.6rem;
+    font-weight: 700;
+}
+
+.home-image img{
+    position: relative;
+    width: 50vw;
+    border-radius: 50%;
+    box-shadow: 0 0 25px brown;
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+
+.home-image img:hover{
+   transform: scale(1.03);
+}
+
+/* ========================================================= */
+/* ===============  PODCAST INTRO SECTION  ================== */
+/* ========================================================= */
+
+/* CLEAN + PROFESSIONAL PODCAST SECTION */
+
+.podcast {
+    padding-top: 12rem;
+    padding-bottom: 5rem;
+}
+
+.podcast-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.podcast-title {
+    font-size: 4.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: brown;
+}
+
+/* Intro text without box */
+.podcast-intro-text {
+    font-size: 2rem;
+    line-height: 1.9;
+    color: #e6e6e6;
+    margin-bottom: 4rem;
+}
+
+/* Subheading */
+.podcast-subtitle {
+    font-size: 3.2rem;
+    font-weight: 600;
+    color: brown;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Objectives list clean look */
+.podcast-objectives-list {
+    font-size: 2rem;
+    line-height: 1.9;
+    color: #e6e6e6;
+    margin-left: 2rem;
+}
+
+.podcast-objectives-list li {
+    margin-bottom: 1.2rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .podcast-title {
+        font-size: 3.8rem;
+    }
+
+    .podcast-intro-text,
+    .podcast-objectives-list {
+        font-size: 1.8rem;
+        padding: 0 1rem;
+    }
+
+    .podcast-subtitle {
+        font-size: 2.8rem;
+    }
+}
+
+
+/* PODCAST SECTION IMPROVED */
+.podcast {
+    padding-top: 12rem;
+}
+
+.podcast-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.podcast-title {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: brown;
+}
+
+/* Intro Card */
+.podcast-intro-card {
+    background: #111;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(165, 42, 42, 0.3);
+    margin-bottom: 3rem;
+    font-size: 1.8rem;
+    line-height: 1.8;
+}
+
+/* Objectives Card */
+.podcast-objectives-card {
+    background: #151515;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(165, 42, 42, 0.3);
+}
+
+.podcast-objectives-card h3 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    color: brown;
+    text-align: center;
+}
+
+.podcast-objectives-card ul {
+    margin-left: 1.5rem;
+}
+
+.podcast-objectives-card li {
+    margin-bottom: 1rem;
+    font-size: 1.7rem;
+    line-height: 1.6;
+}
+
+/* Mobile Friendly */
+@media (max-width: 768px) {
+    .podcast-title {
+        font-size: 3.2rem;
+    }
+
+    .podcast-intro-card,
+    .podcast-objectives-card {
+        padding: 2rem;
+    }
+}
+
+
+/* ========================================================= */
+/* ===================== EPISODES SECTION ================== */
+/* ========================================================= */
+
+.episodes h2 {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.episode-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.episode-card {
+    background: #111;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(165, 42, 42, 0.4);
+}
+
+.episode-card h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: brown;
+    text-align: center;
+}
+
+.episode-card iframe {
+    width: 100%;
+    height: 220px;
+    border-radius: 1rem;
+    border: none;
+}
+
+/* EPISODES SECTION ENHANCED */
+.episodes h2 {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.episode-grid {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.episode-card {
+    background: #111;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(165, 42, 42, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.episode-card h3 {
+    font-size: 2.4rem;
+    color: brown;
+    text-align: center;
+}
+
+.episode-desc {
+    font-size: 1.7rem;
+    line-height: 1.6;
+    color: #ddd;
+    text-align: center;
+}
+
+.episode-card iframe {
+    width: 100%;
+    height: 220px;
+    border-radius: 1rem;
+    border: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .episode-desc {
+        font-size: 1.6rem;
+        padding: 0 1rem;
+    }
+
+    .episode-card iframe {
+        height: 200px;
+    }
+}
+
+
+/* ========================================================= */
+/* ====================== RESPONSIVE ======================== */
+/* ========================================================= */
+
+@media (max-width: 768px) {
+    .podcast-text {
+        padding: 0 1rem;
+    }
+
+/* --- Homepage background image + overlay --- */
+.home {
+    position: relative;
+    min-height: 100vh;
+}
+
+.home::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45); /* dark overlay for contrast */
+    z-index: 0;
+    pointer-events: none;
+}
+
+.home .home-content,
+.home .home-image {
+    position: relative;
+    z-index: 1; /* place content above overlay */
+}
+
+/* Ensure homepage background applies on all screen sizes (not just inside media query) */
+.home {
+    position: relative;
+    min-height: 100vh;
+}
+
+.home::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.home .home-content,
+.home .home-image {
+    position: relative;
+    z-index: 1;
+}
+
+    .episode-card iframe {
+        height: 200px;
+    }
+}
+
+.podcast-objectives {
+    max-width: 100%;
+    line-height: 1.8;
+}
+
+.podcast-objectives p {
+    margin: 0.9rem 0;
+    color: var(--muted);
+    font-size: 1.8rem;
+}
+
+.podcast-objectives strong {
+    color: var(--accent);
+}
